@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+        body {background-image:{{ url_for('static', filename='b.jpg')}};}
+    </style>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="https://www.keepvid.cc/favicon.ico" mce_href="https://www.keepvid.cc/favicon.ico" type="image/x-icon">
+    <title>Result Page</title>
+</head>
+<body background="/static/b4.jpg">
+<p><strong>{{searchkey}}</strong>  Google Top20 URLs: </p>
+  {% if urls %}
+    <ul>
+    {% for url in urls %}
+        <li>{{ url }} </li>
+    {% endfor %}
+    </ul>
+ {% endif %}
+<p><strong>Downgraded URLs:</strong><img src="{{ url_for('static', filename='downarrow.jpg')}}" width="28" height="34" align="middle"/></p>
+     {% if downurls %}
+        <ul>
+        {% for downurl,from,to in downurls %}
+            <li>{{ downurl }} from {{from}} down to {{to}} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+<p><strong>Promoted URLs:</strong><img src="{{ url_for('static', filename='uparrow.jpg')}}" width="28" height="34" align="middle"/></p>
+     {% if upurls %}
+        <ul>
+        {% for upurl,from,to in upurls %}
+            <li>{{ upurl }} from {{from}} up to {{to}} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+{% if newaddedurls %}
+<p><strong>New added URLs:</strong></p>
+        <ul>
+        {% for newurl in newaddedurls %}
+            <li>{{ newurl }}</li>
+        {% endfor %}
+        </ul>
+{% endif %}
+<p><strong>Same as before URLs:</strong></p>
+     {% if sameasurls %}
+        <ul>
+        {% for sameasurl,from,to in sameasurls %}
+            <li>{{ sameasurl }} from {{from}} up to {{to}} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://www.keepvid.cc/favicon.ico" mce_href="https://www.keepvid.cc/favicon.ico" type="image/x-icon">
+    <title>Search Top20 URL</title>
+</head>
+<body>
+<div class="base_login">
+    <h1>Search top20 URL of Google</h1>
+    <div>
+        <form method="POST">
+            {{form.hidden_tag()}}
+            <p>
+                Search Key：{{form.searchkey(id='searchkey')}}
+                {%for e in form.searchkey.errors%}
+                <span style="color: red">*{{e}}</span>
+                {%endfor%}
+            </p>
+            <p><input type="submit" value="Submit"></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
